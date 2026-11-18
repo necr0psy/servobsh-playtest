@@ -1,0 +1,21 @@
+name: Package R4
+on:
+  push:
+    branches: [build-r4-guides]
+    paths: ['.github/workflows/release.yml']
+permissions:
+  contents: write
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: pip install zstandard==0.25.0
+      - run: |
+          curl -fsSL --retry 3 https://github.com/necr0psy/servobsh-playtest/releases/download/winter-r2/Servobsh-Windows-x64.zip -o base.zip
+          echo "26bf81e3a99ece261abc5cf0f928d7adfcce571af57e80888faa6fc76f86fc0d  base.zip" | sha256sum -c
+          python assemble.py
+          gh release upload winter-r4-test Servobsh-R4-Mac.zip Servobsh-R4-Windows.zip --clobber
+          gh release edit winter-r4-test --draft=false
+        env:
+          GH_TOKEN: ${{ github.token }}
