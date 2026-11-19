@@ -1,4 +1,4 @@
-name: Package R5 with optional Prism
+name: Package R6 with optional Prism
 on:
   push:
     branches: [build-r4-guides]
@@ -15,7 +15,7 @@ jobs:
           curl -fsSL --retry 3 https://github.com/necr0psy/servobsh-playtest/releases/download/winter-r2/Servobsh-Windows-x64.zip -o base.zip
           echo "26bf81e3a99ece261abc5cf0f928d7adfcce571af57e80888faa6fc76f86fc0d  base.zip" | sha256sum -c
           python assemble.py
-          gh release upload winter-town-r5 Servobsh-R5-Mac.zip Servobsh-R5-Windows.zip --clobber
-          gh release edit winter-town-r5 --draft=false
+          gh release upload winter-town-r6 Servobsh-R6-Mac.zip Servobsh-R6-Windows.zip --clobber
+          gh release edit winter-town-r6 --draft=false
         env:
           GH_TOKEN: ${{ github.token }}
