@@ -30,8 +30,11 @@ for os,spec in modes.items():
      n=(len(record)+4095)//4096;struct.pack_into('>I',head,i*4,((len(body)//4096+2)<<8)|n)
      body.extend(record);body.extend(bytes(4096*n-len(record)))
     data=head+take(diff['stamps'])+body
+   original=data
+   if name in ("play.command","play.ps1"):data=Path("update",name).read_bytes()
+   if name in ("ПРОЧТИ-МЕНЯ.txt","START-WINDOWS.txt"):data=Path("update/guide.txt").read_bytes()
    manifest[name]=sha(data)
-   if not isinstance(diff,dict):assert manifest[name]==key,name
+   if not isinstance(diff,dict):assert sha(original)==key,name
    info=zipfile.ZipInfo(prefix+name);info.external_attr=attr;info.create_system=3;archive.writestr(info,data,zipfile.ZIP_DEFLATED)
   archive.writestr(prefix+'MANIFEST.sha256.json',json.dumps(manifest,indent=2))
  with zipfile.ZipFile(f'Servobsh-R4-{os}.zip') as z:

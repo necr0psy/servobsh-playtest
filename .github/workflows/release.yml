@@ -1,4 +1,4 @@
-name: Package R4
+name: Package R4 with optional Prism
 on:
   push:
     branches: [build-r4-guides]
