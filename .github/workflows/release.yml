@@ -1,4 +1,4 @@
-name: Package R6 frozen lake final
+name: Package R6 verified lake surface
 on:
   push:
     branches: [build-r4-guides]
