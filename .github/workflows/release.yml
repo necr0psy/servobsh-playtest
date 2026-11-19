@@ -1,4 +1,4 @@
-name: Package R6 with frozen final arena
+name: Package R6 frozen lake final
 on:
   push:
     branches: [build-r4-guides]
