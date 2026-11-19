@@ -164,7 +164,7 @@ arenas:
   points:
     center: 95.5 67 -129.5
     border-center: 83.5 67 -23.5
-    border-edge: 293.5 67 -23.5
+    border-edge: 363.5 67 -23.5
   lists:
     spawns:
     - 263.5 71 -26.5 89 0
